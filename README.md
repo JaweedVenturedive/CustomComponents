@@ -11,8 +11,7 @@ A Custom Circular slider for days selection, works both on Android & iOS:
 Installation: <br />
 ------------ <br />
 <br /> Please install following libraries before using:
-<br /> npm install --save react-native-svg
-<br /> npm install --save prop-types
+<br /> npm install --save react-native-svg prop-types
 <br />
 <br /> Usage: 
 <br /> -----
