@@ -16,13 +16,7 @@ Installation: <br />
 <br />
 <br /> Usage: 
 <br /> -----
-<br />SIMPLE: 
-<br />
-<br /> <DaysCircularSlider />
-<br />
-
-<br />WITH PROPS:
-<br />
+<br /> 
 <br /> <DaysCircularSlider   
   width={200}   <br />
   height={200}  <br />
