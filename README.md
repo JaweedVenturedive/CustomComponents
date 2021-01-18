@@ -8,26 +8,25 @@ A Custom Circular slider for days selection, works both on Android & iOS:
 
 ![grab-landing-page](https://github.com/JamzWork/CustomComponents/blob/main/ezgif-4-9c077d095e0f.gif)
 
-Installation:
-------------
+Installation: <br />
+------------ <br />
+<br /> Please install following libraries before using:
+<br /> npm install --save react-native-svg
+<br /> npm install --save prop-types
+<br />
+<br /> Usage: 
+<br /> -----
+<br />SIMPLE: 
+<br />
+<br /> <DaysCircularSlider 
+<br />    width={200} />
+<br />
 
-Please install following libraries before using:
-npm install --save react-native-svg
-npm install --save prop-types
-
-Usage:
------
-
-SIMPLE:
-
-<DaysCircularSlider />
-
-
-WITH PROPS:
-
-<DaysCircularSlider 
-    width={200} 
-    height={200}
-    MaxDays={10}
-    value={35} 
-    onValueChange={(value)=>this.setState({currentValue:value})}/>
+<br />WITH PROPS:
+<br />
+<br /> <DaysCircularSlider   
+  width={200}   <br />
+  height={200}  <br />
+  MaxDays={10}  <br />
+  value={35}   <br />
+  onValueChange={(value)=>this.setState({currentValue:value})}/>
