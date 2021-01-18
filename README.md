@@ -18,8 +18,7 @@ Installation: <br />
 <br /> -----
 <br />SIMPLE: 
 <br />
-<br /> <DaysCircularSlider 
-<br />    width={200} />
+<br /> <DaysCircularSlider />
 <br />
 
 <br />WITH PROPS:
