@@ -1,5 +1,5 @@
 import React,{ Component} from 'react'
-import {PanResponder, Animated} from 'react-native'
+import {PanResponder} from 'react-native'
 import Svg,{Path,Circle,G,Text} from 'react-native-svg'
 import PropTypes from 'prop-types';
 
@@ -58,17 +58,18 @@ class DaysCircularSlider extends Component {
         , y = cy + (r * Math.sin(a))
     return {x,y}
   }
+  
   cartesianToPolar(x,y){
     const {cx,cy} = this.state
     return Math.round((Math.atan((y-cy)/(x-cx)))/(Math.PI/180)+((x>cx) ? 270 : 90))
   }
+
   handlePanResponderMove({nativeEvent:{locationX,locationY}}){
     const {cx,cy} = this.state
     let angle = this.cartesianToPolar(locationX,locationY);
    
     if(angle < 350)
-    {
-      console.log(''+angle)
+    { 
       this.state.hasCrossed && this.state.passed350 ? this.props.onValueChange(359) : this.props.onValueChange(angle);
     }
     else{
@@ -82,13 +83,18 @@ class DaysCircularSlider extends Component {
     }
       
   }
+
+  
   render(){
-   
     const {width,height,value,meterColor,textColor,onValueChange} = this.props
         , {cx,cy,r} = this.state
         , startCoord = this.polarToCartesian(0)
         , endCoord = this.polarToCartesian((value > 359 ? 359 : value))
         const vaalee = (value > 359 ? 359 : value);
+    
+    let onDragHandler = (this.state.hasCrossed && this.state.passed350) ? console.log('sdf') :  {...this._panResponder.panHandlers}  ;
+    const BtnCircleRadius = 17;
+    const BtnFontSize = 33;
     return (
       <Svg onLayout={this.onLayout} width={width} height={height}>
          
@@ -100,19 +106,20 @@ class DaysCircularSlider extends Component {
           d={`M${startCoord.x} ${startCoord.y} A ${r} ${r} 0 ${vaalee>180?1:0} 1 ${endCoord.x} ${endCoord.y}`}/>
          
            <G scale='1.0' x={endCoord.x-7.5} y={endCoord.y-7.5}  >
-                <Circle cx={7.5} cy={7.5} r={14} fill={meterColor}  {...this._panResponder.panHandlers}  />
-                <Text  key={value+''} x={7.5} y={16} fontSize={30} fill={textColor} textAnchor="middle" onPress={()=>  {
-                  this.state.hasCrossed && this.state.passed350 ? this.props.onValueChange(value+this.state.MaxDays) :   console.log('asdf')   } 
-               } >{' + '}</Text>
+                <Circle cx={7.5} cy={7.5} r={BtnCircleRadius} fill={meterColor}   onPress={()=>  (this.state.hasCrossed && this.state.passed350) ? this.props.onValueChange(value+this.state.MaxDays) : {} }
+                  {...onDragHandler} />
+                <Text  key={value+''} x={7.5} y={16} fontSize={BtnFontSize} fill={textColor} textAnchor="middle" >{' + '}</Text>
            </G>
        
         {
-          value > 358 && <G x={width/2 - 10} y={10} onPress={()=>  {
+          value > 358 && <G x={width/2 - 10} y={endCoord.y-175} onPress={()=>  {
             this.props.onValueChange(value-this.state.MaxDays) ,
             this.setState({hasCrossed:false,passed350:false}) } 
          }>
-            <Circle cx={7.5} cy={7.5} r={14} fill={meterColor}  />
-            <Text key={'-'} x={7.5} y={17} fontSize={30} fill={textColor} textAnchor="middle">{'-'}</Text>
+            <Circle cx={7.5} cy={7.5} r={BtnCircleRadius} fill={meterColor}  >
+              
+            </Circle>
+            <Text key={'-'} x={7.5} y={17} fontSize={BtnFontSize} fill={textColor} textAnchor="middle">{'-'}</Text>
           </G>
         }
       </Svg>
