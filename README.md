@@ -15,7 +15,7 @@ Installation: <br />
 <br /> Usage: 
 <br /> -----
 <br /> 
-<br /> <RatingCircular  width={250} height={250}  <br />  />
+<br /> <RatingCircular  width={250} height={250} />
 
 
 DaysCircularSlider.js:
