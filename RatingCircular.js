@@ -13,6 +13,11 @@ class RatingCircular extends Component {
     meterColor: PropTypes.string.isRequired,
     textColor: PropTypes.string.isRequired, 
     value: PropTypes.number.isRequired,
+
+    faceHappy:PropTypes.string.isRequired,
+    faceNuet:PropTypes.string.isRequired,
+    faceSad:PropTypes.string.isRequired,
+
   };
   static defaultProps = { 
     width: 200,
@@ -92,16 +97,16 @@ class RatingCircular extends Component {
     const BtnCircleRadius = 17; 
     let color = 'red';
     let emotionType='';
-    let emotionIcon = Images.Icon_Sad;
+    let emotionIcon = faceSad || Images.Icon_Sad;
 
     if(this.state.angle > -30){
-      emotionType='Sad'; color = 'red'; emotionIcon = Images.Icon_Sad;
+      emotionType='Sad'; color = 'red'; emotionIcon = faceSad || Images.Icon_Sad;
     }
     else if(this.state.angle > -50 || this.state.angle > -69){
-      emotionType='Neutral'; color = 'orange'; emotionIcon = Images.Icon_Neutral;
+      emotionType='Neutral'; color = 'orange'; emotionIcon = faceNuet || Images.Icon_Neutral;
     }
     else if(this.state.angle > -70 || this.state.angle > -150){
-      emotionType='Happy'; color = 'green'; emotionIcon = Images.Icon_Happy;
+      emotionType='Happy'; color = 'green'; emotionIcon = faceHappy || Images.Icon_Happy;
     }
    
     return (
